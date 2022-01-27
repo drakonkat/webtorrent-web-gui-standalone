@@ -34,7 +34,6 @@ express:
     - docker:dind
   script:
     - docker login -u "$DOCKER_USERNAME" -p "$DOCKER_PASSWORD" docker.io
-    - docker pull mauromazzocchetti/webtorrent-web-gui-standalone:latest
     - docker build --progress=plain --tag="mauromazzocchetti/webtorrent-web-gui-standalone:$IMAGE_VERSION" --tag="mauromazzocchetti/webtorrent-web-gui-standalone:latest" ./
     - docker push mauromazzocchetti/webtorrent-web-gui-standalone:$IMAGE_VERSION
     - docker push mauromazzocchetti/webtorrent-web-gui-standalone:latest
