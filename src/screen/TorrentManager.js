@@ -10,38 +10,33 @@ const theme = createTheme({
 })
 
 function TorrentManager(props) {
-    const [host, setHost] = useState("");
-    const [port, setPort] = useState(3000);
+    const [baseUrl, setBaseUrl] = useState("");
     const [key, setKey] = useState(null);
+    let path = process.env.REACT_APP_BASE_PATH
+    if (!key && path != null) {
+        setKey(path);
+    }
+    console.log("CHECK PATH: ", path)
     return (
         <ThemeProvider theme={theme}>
             <CssBaseline/>
             <Container>
                 <Stack spacing={2} alignItems={"center"}>
-                    <Stack direction={"row"} spacing={4}>
+                    {!path && <Stack direction={"row"} spacing={4}>
                         <TextField
-                            id={"host"}
+                            id={"baseUrl"}
                             type="text"
                             variant={"outlined"}
-                            value={host}
+                            value={baseUrl}
                             onChange={(e) => {
-                                setHost(e.target.value)
-                            }}
-                        />
-                        <TextField
-                            id={"port"}
-                            type="number"
-                            variant={"outlined"}
-                            value={port}
-                            onChange={(e) => {
-                                setPort(e.target.value)
+                                setBaseUrl(e.target.value)
                             }}
                         />
                         <Button startIcon={<Save/>} onClick={() => {
-                            setKey(host + ":" + port)
+                            setKey(baseUrl)
                         }}> Save </Button>
-                    </Stack>
-                    {key && <WebTorrentGui key={key} host={host} port={port}/>}
+                    </Stack>}
+                    {key && <WebTorrentGui key={key} baseUrl={path}/>}
                 </Stack>
             </Container>
         </ThemeProvider>
