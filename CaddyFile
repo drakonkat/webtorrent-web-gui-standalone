@@ -2,7 +2,7 @@
 	auto_https disable_redirects
 }
 
-wss://localhost, ws://localhost, http://localhost, https://localhost {
+wss://*, ws://*, http://*, https://* {
     root * /usr/src/app/build/
     file_server
 
