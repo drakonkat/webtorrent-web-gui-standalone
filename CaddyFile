@@ -1,16 +1,15 @@
 {
 	auto_https disable_redirects
 }
-
-wss://*, ws://*, http://*, https://* {
+ws://, http:// {
     root * /usr/src/app/build/
     file_server
-
+    log
     handle_path /api/* {
-    	rewrite * {path}
-    	reverse_proxy 127.0.0.1:3000
+        rewrite * {path}
+        reverse_proxy localhost:3000
     }
     handle_path /w* {
-        reverse_proxy 127.0.0.1:3000
+        reverse_proxy localhost:3000
     }
 }
