@@ -22,6 +22,7 @@ RUN npm install node-pre-gyp -g
 RUN npm install
 COPY . .
 COPY .envStandalone /usr/src/app/.env
+RUN npm run build
 
 #Install express
 WORKDIR /usr/src

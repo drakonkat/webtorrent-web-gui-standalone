@@ -3,7 +3,8 @@
 }
 
 wss://localhost, ws://localhost, http://localhost, https://localhost {
-    reverse_proxy 127.0.0.1:4000
+    root * /usr/src/app/build/
+    file_server
 
     handle_path /api/* {
     	rewrite * {path}
