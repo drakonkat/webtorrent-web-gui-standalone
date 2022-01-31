@@ -35,6 +35,8 @@ WORKDIR /usr/src
 COPY start-docker.sh .
 COPY CaddyFile .
 RUN npm install -g concurrently
+RUN chmod +x start-docker.sh
+
 
 EXPOSE 80
 EXPOSE 443
