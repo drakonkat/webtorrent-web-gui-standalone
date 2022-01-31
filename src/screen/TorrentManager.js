@@ -14,6 +14,10 @@ function TorrentManager(props) {
     const [key, setKey] = useState(null);
     let path = process.env.REACT_APP_BASE_PATH
     if (!key && path != null) {
+        let protocol = window.location.protocol;
+        let domain = window.location.hostname;
+        let port = window.location.port;
+        path = `${protocol}://${domain}${port ? (":"+port) : ""}`+process.env.REACT_APP_BASE_PATH
         setKey(path);
     }
     console.log("CHECK PATH: ", path)

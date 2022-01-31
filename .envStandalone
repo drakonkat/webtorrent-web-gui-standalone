@@ -1,2 +1,2 @@
 PORT=4000
-REACT_APP_BASE_PATH=https://localhost/api/
+REACT_APP_BASE_PATH=/api/
