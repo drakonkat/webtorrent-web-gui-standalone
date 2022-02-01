@@ -20,7 +20,7 @@ function TorrentManager(props) {
         path = `${protocol}//${domain}${port ? (":"+port) : ""}`+process.env.REACT_APP_BASE_PATH
         setKey(path);
     }
-    console.log("CHECK PATH: ", path)
+    console.log("CHECK PATH: ", path || baseUrl)
     return (
         <ThemeProvider theme={theme}>
             <CssBaseline/>
@@ -40,7 +40,7 @@ function TorrentManager(props) {
                             setKey(baseUrl)
                         }}> Save </Button>
                     </Stack>}
-                    {key && <WebTorrentGui key={key} baseUrl={path}/>}
+                    {key && <WebTorrentGui key={key} baseUrl={path || baseUrl}/>}
                 </Stack>
             </Container>
         </ThemeProvider>
