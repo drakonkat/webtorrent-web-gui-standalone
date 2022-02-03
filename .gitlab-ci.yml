@@ -1,5 +1,5 @@
 variables:
-  IMAGE_VERSION: "0.2"
+  IMAGE_VERSION: "0.3"
 
 stages:
   - build

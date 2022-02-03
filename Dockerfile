@@ -1,4 +1,4 @@
-FROM node:latest
+FROM node:16.8.0
 # Install caddy
 RUN apt update
 RUN apt install -y debian-keyring debian-archive-keyring apt-transport-https
@@ -28,14 +28,12 @@ RUN npm run build
 WORKDIR /usr/src
 RUN git clone https://gitlab.com/t5257/webtorrent-express-api.git
 WORKDIR /usr/src/webtorrent-express-api
-RUN npm install node-pre-gyp -g
 RUN npm install
 
 # Preparazione script di lancio
 WORKDIR /usr/src
 COPY start-docker.sh .
 COPY CaddyFile .
-RUN npm install -g concurrently
 RUN chmod +x start-docker.sh
 
 
