@@ -19,8 +19,8 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
-    "build-docker": "react-scripts build",
+    "build": "cp .envDev .env && react-scripts build && cp .envDev .env",
+    "build-local": "cp .envLocal .env && react-scripts build && cp .envDev .env",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
