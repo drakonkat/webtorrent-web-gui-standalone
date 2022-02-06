@@ -24,14 +24,15 @@ function TorrentManager(props) {
     return (
         <ThemeProvider theme={theme}>
             <CssBaseline/>
-            <Container>
-                <Stack spacing={2} alignItems={"center"}>
+            <Container maxWidth="false">
+            <Stack spacing={2} alignItems={"center"}>
                     {!path && <Stack direction={"row"} spacing={4}>
                         <TextField
                             id={"baseUrl"}
                             type="text"
                             variant={"outlined"}
                             value={baseUrl}
+                            helperText={"Insert here the path of your remote instance (Es. http://localhost:3000)"}
                             onChange={(e) => {
                                 setBaseUrl(e.target.value)
                             }}
@@ -40,7 +41,7 @@ function TorrentManager(props) {
                             setKey(baseUrl)
                         }}> Save </Button>
                     </Stack>}
-                    {key && <WebTorrentGui key={key} baseUrl={path || baseUrl}/>}
+                    {key ? <WebTorrentGui key={key} baseUrl={path || baseUrl}/> : null}
                 </Stack>
             </Container>
         </ThemeProvider>
