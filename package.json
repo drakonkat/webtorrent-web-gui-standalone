@@ -1,6 +1,6 @@
 {
   "name": "webtorrent-web-gui-standalone",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "homepage": ".",
   "private": true,
   "dependencies": {
@@ -15,12 +15,12 @@
     "react-dom": "^17.0.2",
     "react-scripts": "4.0.3",
     "web-vitals": "^2.1.4",
-    "webtorrent-web-gui": "^0.9.9"
+    "webtorrent-web-gui": "^0.9.10"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "cp .envDev .env && react-scripts build && cp .envDev .env",
-    "build-local": "cp .envLocal .env && react-scripts build && cp .envDev .env",
+    "start": "react-scripts --openssl-legacy-provider start",
+    "build": "cp .envDev .env && react-scripts --openssl-legacy-provider build && cp .envDev .env",
+    "build-local": "cp .envLocal .env && react-scripts --openssl-legacy-provider build && cp .envDev .env",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
