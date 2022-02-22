@@ -14,18 +14,22 @@ function TorrentManager(props) {
     const [key, setKey] = useState(null);
     let path = process.env.REACT_APP_BASE_PATH
     if (!key && path != null) {
-        let protocol = window.location.protocol;
-        let domain = window.location.hostname;
-        let port = window.location.port;
-        path = `${protocol}//${domain}${port ? (":"+port) : ""}`+process.env.REACT_APP_BASE_PATH
-        setKey(path);
+        if (path.startsWith("http")) {
+            setKey(path)
+        } else {
+            let protocol = window.location.protocol;
+            let domain = window.location.hostname;
+            let port = window.location.port;
+            path = `${protocol}//${domain}${port ? (":" + port) : ""}` + process.env.REACT_APP_BASE_PATH
+            setKey(path);
+        }
     }
     console.log("CHECK PATH: ", path || baseUrl)
     return (
         <ThemeProvider theme={theme}>
             <CssBaseline/>
             <Container maxWidth="false">
-            <Stack spacing={2} alignItems={"center"}>
+                <Stack spacing={2} alignItems={"center"}>
                     {!path && <Stack direction={"row"} spacing={4}>
                         <TextField
                             id={"baseUrl"}
