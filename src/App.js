@@ -3,9 +3,7 @@ import TorrentManager from "./screen/TorrentManager";
 
 function App() {
     return (
-        <div className="App">
             <TorrentManager/>
-        </div>
     );
 }
 

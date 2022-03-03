@@ -1,12 +1,28 @@
 import React, {useState} from 'react';
 import {Button, Container, createTheme, CssBaseline, Stack, TextField, ThemeProvider} from "@mui/material";
-import {WebTorrentGui} from "webtorrent-web-gui";
+import {WebTorrentGuiV2} from "webtorrent-web-gui";
 import {Save} from "@mui/icons-material";
 
+const defaultTheme = createTheme();
 const theme = createTheme({
     palette: {
-        mode: 'dark'
-    }
+        mode: 'dark',
+    },
+    components: {
+        MuiContainer: {
+            styleOverrides: {
+                root: {
+                    paddingLeft: "0px",
+                    paddingRight: "0px",
+                    height: "100%",
+                    [defaultTheme.breakpoints.up('xs')]: {
+                        paddingLeft: "0px",
+                        paddingRight: "0px",
+                    }
+                },
+            },
+        },
+    },
 })
 
 function TorrentManager(props) {
@@ -29,7 +45,7 @@ function TorrentManager(props) {
         <ThemeProvider theme={theme}>
             <CssBaseline/>
             <Container maxWidth="false">
-                <Stack spacing={2} alignItems={"center"}>
+                <Stack sx={{height:"100%"}} spacing={2} alignItems={"center"}>
                     {!path && <Stack direction={"row"} spacing={4}>
                         <TextField
                             id={"baseUrl"}
@@ -45,7 +61,7 @@ function TorrentManager(props) {
                             setKey(baseUrl)
                         }}> Save </Button>
                     </Stack>}
-                    {key ? <WebTorrentGui key={key} baseUrl={path || baseUrl}/> : null}
+                    {key ? <WebTorrentGuiV2 key={key} baseUrl={path || baseUrl}/> : null}
                 </Stack>
             </Container>
         </ThemeProvider>
