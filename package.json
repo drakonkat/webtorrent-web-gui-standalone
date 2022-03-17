@@ -1,6 +1,6 @@
 {
   "name": "webtorrent-web-gui-standalone",
-  "version": "0.1.11",
+  "version": "0.1.12",
   "homepage": ".",
   "private": true,
   "dependencies": {

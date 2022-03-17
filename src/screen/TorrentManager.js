@@ -61,7 +61,7 @@ function TorrentManager(props) {
                             setKey(baseUrl)
                         }}> Save </Button>
                     </Stack>}
-                    {key ? <WebTorrentGuiV2 remote={(path || baseUrl).includes("localhost") || (path || baseUrl).includes("127.0.0.1")} key={key} baseUrl={path || baseUrl}/> : null}
+                    {key ? <WebTorrentGuiV2 remote={!((path || baseUrl).includes("localhost") || (path || baseUrl).includes("127.0.0.1"))} key={key} baseUrl={path || baseUrl}/> : null}
                 </Stack>
             </Container>
         </ThemeProvider>
