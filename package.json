@@ -16,7 +16,7 @@
     "react-scripts": "4.0.3",
     "web-vitals": "^2.1.4",
     "webtorrent": "^1.8.6",
-    "webtorrent-web-gui": "^1.0.0"
+    "webtorrent-web-gui": "^1.0.1"
   },
   "scripts": {
     "start": "react-scripts start",
