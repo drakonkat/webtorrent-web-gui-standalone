@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import {Button, Container, createTheme, CssBaseline, Stack, TextField, ThemeProvider} from "@mui/material";
 import {WebTorrentGuiV2} from "webtorrent-web-gui";
 import {Save} from "@mui/icons-material";
+import logo from "../asset/default-nomargin.svg"
 
 const defaultTheme = createTheme();
 const theme = createTheme({
@@ -61,7 +62,7 @@ function TorrentManager(props) {
                             setKey(baseUrl)
                         }}> Save </Button>
                     </Stack>}
-                    {key ? <WebTorrentGuiV2 remote={!((path || baseUrl).includes("localhost") || (path || baseUrl).includes("127.0.0.1"))} key={key} baseUrl={path || baseUrl}/> : null}
+                    {key ? <WebTorrentGuiV2 logo={logo} remote={!((path || baseUrl).includes("localhost") || (path || baseUrl).includes("127.0.0.1"))} key={key} baseUrl={path || baseUrl}/> : null}
                 </Stack>
             </Container>
         </ThemeProvider>
