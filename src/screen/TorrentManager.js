@@ -29,7 +29,8 @@ const theme = createTheme({
 function TorrentManager(props) {
     const [baseUrl, setBaseUrl] = useState("");
     const [key, setKey] = useState(null);
-    let path = process.env.REACT_APP_BASE_PATH
+    let path = key || process.env.REACT_APP_BASE_PATH
+    console.log("CHECK PATH1: ", path)
     if (!key && path != null) {
         if (path.startsWith("http")) {
             setKey(path)
@@ -41,12 +42,12 @@ function TorrentManager(props) {
             setKey(path);
         }
     }
-    console.log("CHECK PATH: ", path || baseUrl)
+    console.log("CHECK PATH: ", path)
     return (
         <ThemeProvider theme={theme}>
             <CssBaseline/>
             <Container maxWidth="false">
-                <Stack sx={{height:"100%"}} spacing={2} alignItems={"center"}>
+                <Stack sx={{height: "100%"}} spacing={2} alignItems={"center"}>
                     {!path && <Stack direction={"row"} spacing={4}>
                         <TextField
                             id={"baseUrl"}
@@ -62,7 +63,9 @@ function TorrentManager(props) {
                             setKey(baseUrl)
                         }}> Save </Button>
                     </Stack>}
-                    {key ? <WebTorrentGuiV2 logo={logo} remote={!((path || baseUrl).includes("localhost") || (path || baseUrl).includes("127.0.0.1"))} key={key} baseUrl={path || baseUrl}/> : null}
+                    {key ? <WebTorrentGuiV2 logo={logo}
+                                            remote={!((path || baseUrl).includes("localhost") || (path || baseUrl).includes("127.0.0.1"))}
+                                            key={key} baseUrl={path || baseUrl}/> : null}
                 </Stack>
             </Container>
         </ThemeProvider>
