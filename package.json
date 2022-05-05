@@ -1,6 +1,6 @@
 {
   "name": "webtorrent-web-gui-standalone",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "homepage": ".",
   "private": true,
   "dependencies": {
@@ -16,7 +16,7 @@
     "react-scripts": "4.0.3",
     "web-vitals": "^2.1.4",
     "webtorrent": "^1.8.6",
-    "webtorrent-web-gui": "^1.0.8"
+    "webtorrent-web-gui": "^1.1.0"
   },
   "scripts": {
     "start": "react-scripts start",
