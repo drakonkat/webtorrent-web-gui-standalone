@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {Button, Container, createTheme, CssBaseline, Stack, TextField, ThemeProvider} from "@mui/material";
 import {WebTorrentGuiV2} from "webtorrent-web-gui";
 import {Save} from "@mui/icons-material";
@@ -30,7 +30,20 @@ function TorrentManager(props) {
     const [baseUrl, setBaseUrl] = useState("");
     const [key, setKey] = useState(null);
     let path = key || process.env.REACT_APP_BASE_PATH
-    console.log("CHECK PATH1: ", path)
+    useEffect(() => {
+        (async () => {
+            let port = new URLSearchParams(props.location.search).get("port")
+            if (port) {
+                let protocol = window.location.protocol;
+                let domain = window.location.hostname;
+                path = `${protocol}//${domain}${port ? (":" + port) : ""}` + process.env.REACT_APP_BASE_PATH
+                setKey(path);
+            } else {
+                console.log("Custom port not defined")
+            }
+        })()
+    }, [])
+
     if (!key && path != null) {
         if (path.startsWith("http")) {
             setKey(path)
@@ -42,7 +55,7 @@ function TorrentManager(props) {
             setKey(path);
         }
     }
-    console.log("CHECK PATH: ", path)
+    console.info("Using path: ", path)
     return (
         <ThemeProvider theme={theme}>
             <CssBaseline/>
